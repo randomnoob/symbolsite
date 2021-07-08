@@ -13,6 +13,8 @@ ipython = "*"
 pandas = "*"
 html5lib = "*"
 django = "*"
+whitenoise = "*"
+cookiecutter = "*"
 
 [dev-packages]
 
