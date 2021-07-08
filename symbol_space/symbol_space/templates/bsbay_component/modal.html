@@ -1,0 +1,185 @@
+	<!-- Login Modal -->
+	<div class="modal fade" id="log-in" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title">
+						<h4 class="modal-title">Log In</h4>
+						<p>Enter your details below</p>
+					</div>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true"><i class="zmdi zmdi-close"></i></span>
+					</button>
+				</div>
+				<div id="notice" class="alert alert-danger d-none">
+				</div>
+
+
+				<div class="modal-body">
+
+					<form action="login" accept-charset="UTF-8" method="post"><input
+							name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token"
+							value="U92PKFdJUQClM32QuTFhr3/JxjkS+QarF54AWRBl5HsrkrXsZ5F+DK2kF2MbIj2JNC6fRqCoTjtdN3AoxU/jyA==">
+						<input type="hidden" name="authenticity_token" id="authenticity_token"
+							value="U92PKFdJUQClM32QuTFhr3/JxjkS+QarF54AWRBl5HsrkrXsZ5F+DK2kF2MbIj2JNC6fRqCoTjtdN3AoxU/jyA==">
+						<label> Username or Email </label>
+						<input class="form-control" placeholder="johndoe" type="text" name="session[identity]"
+							id="session_identity">
+
+						<label> Password </label>
+						<div class="input-group">
+							<input id="log-password" class="form-control" placeholder="Enter your password"
+								type="password" name="session[password]">
+							<div class="input-group-append toggle-password" data-password="log-password">
+								<span class="input-group-text">
+									<i class="zmdi zmdi-eye-off"></i>
+								</span>
+							</div>
+						</div>
+
+						<div class="d-flex justify-content-end">
+
+							<a class="forgot-password"
+								href="theme/datta-able-bootstrap-admin-template-ui-kit-BEEB58E#a"
+								data-toggle="modal" data-target="#recover-password" data-untoggle="#log-in">Forgot
+								password?</a>
+						</div>
+
+						<input value="" type="hidden" name="session[last_page]"
+							id="session_last_page">
+
+						<input type="submit" name="commit" value="Log in" class="btn btn-success btn-submit"
+							data-disable-with="Log in">
+					</form>
+				</div>
+				<div class="modal-footer d-flex justify-content-center text-center">
+					<p>Don't have a BootstrapBay account yet? <a
+							href="theme/datta-able-bootstrap-admin-template-ui-kit-BEEB58E#a"
+							data-toggle="modal" data-target="#sign-up" data-untoggle="#log-in">Create Account</a>.
+						<br>
+						<a href="faq#faq-cat-1-sub-2" target="_blank">Why do I need an
+							account?</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Signup Modal -->
+	<div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title">
+						<h4 class="modal-title">Create your account</h4>
+						<p>Enter your details below</p>
+					</div>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true"><i class="zmdi zmdi-close"></i></span>
+					</button>
+				</div>
+				<div id="signup-notice" class="alert alert-danger d-none"></div>
+
+
+				<div class="modal-body">
+
+					<form action="sign-up" accept-charset="UTF-8" method="post"><input
+							name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token"
+							value="U92PKFdJUQClM32QuTFhr3/JxjkS+QarF54AWRBl5HsrkrXsZ5F+DK2kF2MbIj2JNC6fRqCoTjtdN3AoxU/jyA==">
+						<input type="hidden" name="authenticity_token" id="authenticity_token"
+							value="U92PKFdJUQClM32QuTFhr3/JxjkS+QarF54AWRBl5HsrkrXsZ5F+DK2kF2MbIj2JNC6fRqCoTjtdN3AoxU/jyA==">
+						<label> Username </label>
+						<input class="form-control" placeholder="johndoe" type="text" name="user[username]"
+							id="user_username">
+
+						<label> Email </label>
+						<input id="email" class="form-control" placeholder="jonh@doe.com" type="text"
+							name="user[email]">
+
+						<label> Password </label>
+						<div class="input-group">
+							<input id="password" class="form-control" placeholder="Enter your password" type="password"
+								name="user[password]">
+							<div class="input-group-append toggle-password" data-password="password">
+								<span class="input-group-text">
+									<i class="zmdi zmdi-eye-off"></i>
+								</span>
+							</div>
+						</div>
+
+						<label> Confirm password </label>
+						<div class="input-group">
+							<input id="confirm-password" class="form-control" placeholder="Confirm your password"
+								type="password" name="user[password_confirmation]">
+							<div class="input-group-append toggle-password" data-password="confirm-password">
+								<span class="input-group-text">
+									<i class="zmdi zmdi-eye-off"></i>
+								</span>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="checkbox newsletter">
+								<label>
+									<input type="checkbox" name="newsletter" id="newsletter" value="1"> I'd like to hear
+									about promos, new templates, and much more!
+								</label>
+							</div>
+						</div>
+						<input type="submit" name="commit" value="Create account" id="signup_btn"
+							class="btn btn-success signupBtn" data-disable-with="Create account">
+						<label class="terms">
+							By clicking Create Account, you have read and agree to the <a
+								href="terms" target="_blank">Terms &amp;
+								Conditions</a> and <a href="privacy"
+								target="_blank">Privacy Policy</a>.
+						</label>
+					</form>
+				</div>
+				<div class="modal-footer d-flex justify-content-center">
+					<p>Already have an account? <a
+							href="theme/datta-able-bootstrap-admin-template-ui-kit-BEEB58E#a"
+							data-toggle="modal" data-target="#log-in" data-untoggle="#sign-up">Log In</a>.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Recover Password Modal -->
+	<div class="modal fade" id="recover-password" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title">
+						<h4 class="modal-title">Recover Password</h4>
+						<p>Please enter the email address you provided during registration.</p>
+					</div>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true"><i class="zmdi zmdi-close"></i></span>
+					</button>
+				</div>
+
+
+				<div class="modal-body">
+					<form action="reset-password-send" accept-charset="UTF-8"
+						method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden"
+							name="authenticity_token"
+							value="U92PKFdJUQClM32QuTFhr3/JxjkS+QarF54AWRBl5HsrkrXsZ5F+DK2kF2MbIj2JNC6fRqCoTjtdN3AoxU/jyA==">
+						<label>Email</label>
+						<input class="form-control" placeholder="john@doe.com" type="text" name="user[email]"
+							id="user_email">
+						<input type="submit" name="commit" value="Request reset link" class="btn btn-success btn-submit"
+							data-disable-with="Request reset link">
+					</form>
+				</div>
+				<div class="modal-footer d-flex justify-content-center">
+					<p><a href="theme/datta-able-bootstrap-admin-template-ui-kit-BEEB58E#a"
+							data-toggle="modal" data-target="#log-in" data-untoggle="#recover-password">Back to
+							login</a>.</p>
+				</div>
+			</div>
+		</div>
+	</div>

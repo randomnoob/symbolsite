@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 
+	<link rel="canonical"
+		href="theme/datta-able-bootstrap-admin-template-ui-kit-BEEB58E">
+
+	<link rel="shortcut icon" type="image/x-icon"
+		href="assets/favicon-e7a08f1c8dda62173836173c67e39c509f835c648e3d9c6b46a0dd434fd00253.ico"> -->
+	<title>{% block page_title %}page_title{% endblock %}</title>
+	<link href="{% static 'bsbay_files/css.css' %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'bsbay_files/material-design-iconic-font.min.css' %}">
+	<script src="{% static 'bsbay_files/a6a861950c.js' %}" crossorigin="anonymous"></script>
+
+	{% include "bsbay_component/font-awesome.html" %}
+
+
+	<link rel="stylesheet" media="all"
+		href="{% static 'bsbay_files/application-b7366a30d6f8e3ae07e64f37612e0e8b2dc2a6eebf7d48dedac34a6d55d57420.css' %}">
+	<script
+		src="{% static 'bsbay_files/application-7a986b197ea091722ae4700b374dad29e6b7b691af7f4a226edd318b13778b5b.js' %}"></script>
+
+
+</head>
+
+<body class="theme-layout">
+
+	{% include "bsbay_component/navbar.html" %}
+	{% include "bsbay_component/modal.html" %}
+	
+
+
+
+	<div class="mini-header mini-header-theme" style="background-image: url('/static/bsbay_files/mini_header.jpg');">
+		<div class="container">
+			<h1>{% block h1 %}Datta Able Bootstrap XXXXXXXXX{% endblock %}</h1>
+		</div>
+	</div>
+
+	{% block content %}
+	{% include "bsbay_component/content.html" %}
+	{% include "bsbay_component/recommend.html" %}
+	{% endblock %}
+
+	{% block footer %}
+	{% include "bsbay_component/footer.html" %}
+	{% endblock %}
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
