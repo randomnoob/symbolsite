@@ -1,0 +1,9 @@
+{% extends 'bsbay.html' %}
+
+{% block page_title %}{{ object.name }} Emoji {{object.emoji}}{{object.emoji}}{{object.emoji}}{% endblock %}
+
+{% block h1 %}{{object.name}} Emoji ({{object.emoji}}{{object.emoji}}{{object.emoji}}){% endblock %}
+
+{% block content %}
+{% include "bsbay_component/content.html" %}
+{% endblock %}

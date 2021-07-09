@@ -18,14 +18,18 @@ class Command(BaseCommand):
                 print(f"Entrizzzzzzzzzz : {entry['data']['meaning']}\n")
                 ejite = EmojiTerra.objects.create(
                     name=entry['name'],
-                    emoji=entry['data']['emoji'],
+                    # TAKE EMOJI FROM ANOTHER FIELD BECAUSE ORIGINAL ONE IS CORRUPTED
+                    emoji=entry['data']['unicode_data']['Unicode Code Point(s)'].split(":")[0],
                     url=entry['link'],
+                    slug=entry['link'].split("/")[-2],
                     unicode_shortname=entry['data']['meaning']['Short name:'],
                     unicode_keywords=entry['data']['meaning']['Keywords:'],
                     unicode_categories=entry['data']['meaning']['Categories:'],
-                    unicode_codepoints=entry['data']['unicode_data']['Unicode Code Point(s)'],
-                    unicode_version=entry['data']['unicode_data']['Listed in:'],
-                    unicode_codes=str(entry['data']['emoji_codes']),
+                    # REPLACE TO CLEAN THE FIELD
+                    unicode_codepoints=entry['data']['unicode_data']['Unicode Code Point(s)'].replace("Variation Selector", ", Variation Selector"),
+                    # REPLACE TO CLEAN THE FIELD
+                    unicode_version=entry['data']['unicode_data']['Listed in:'].replace("Unicode", ", Unicode"),
+                    unicode_codes=json.dumps(entry['data']['emoji_codes']),
 
                     android_4_4_kitkat=entry['data']['support']['Android 4.4 KitKat'],
                     android_5_1_lollipop=entry['data']['support']['Android 5.1 Lollipop'],

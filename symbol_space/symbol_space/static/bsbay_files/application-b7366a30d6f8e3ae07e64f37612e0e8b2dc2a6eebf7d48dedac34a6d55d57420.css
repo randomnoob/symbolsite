@@ -12706,7 +12706,7 @@ label {
 }
 
 .mini-header.mini-header-theme h1 {
-    font-size: 2em
+    font-size: 3em
 }
 
 .header {
@@ -13943,5 +13943,34 @@ label {
     }
     .navbar .navbar-nav .nav-link {
         font-size: 0.75em
+    }
+}
+
+.bigmoji {
+    font-size:10em;
+}
+
+.the-sidebar h2{
+    font-size:1.5em;
+}
+
+.the-sidebar li{
+    padding: 0.15em 0.3em;
+}
+
+#copy-paste {
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 10em;
+    margin-bottom: 2px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .the-sidebar {
+        display:none;
+    }
+    .the-sidebar.active {
+        margin-left: 0;
     }
 }

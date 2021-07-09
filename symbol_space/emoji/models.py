@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class EmojiTerra(models.Model):
     """
@@ -8,12 +9,13 @@ class EmojiTerra(models.Model):
     name = models.CharField(max_length=1000)
     emoji = models.CharField(max_length=1000)
     url = models.CharField(max_length=1000)
+    slug = models.SlugField(unique=True)
     unicode_shortname = models.CharField(max_length=1000)
     unicode_keywords = models.CharField(max_length=1000)
     unicode_categories = models.CharField(max_length=1000)
     unicode_codepoints = models.CharField(max_length=1000)
     unicode_version = models.CharField(max_length=1000)
-    unicode_codes = models.CharField(max_length=1000)
+    unicode_codes = models.TextField()
 
     ## SUPPORT
     android_4_4_kitkat = models.CharField(max_length=1000)
@@ -29,3 +31,9 @@ class EmojiTerra(models.Model):
     twemoji_2_3 = models.CharField(max_length=1000)
     twemoji_12_1_5 = models.CharField(max_length=1000)
     twemoji_13_0 = models.CharField(max_length=1000)
+    
+    # def __str__(self):
+    #     return self.name
+
+    def get_absolute_url(self):
+        return reverse('emoji_detail_slug', args=[str(self.id)])
