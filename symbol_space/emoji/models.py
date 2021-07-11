@@ -1,6 +1,17 @@
 from django.db import models
 from django.urls import reverse
 
+
+class Category(models.Model):
+    """
+    The category/tag model for the main emojis
+    """
+    name = models.CharField(max_length=1000)
+    slug = models.SlugField(unique=True)
+    description = models.TextField(null=True)
+
+
+
 class EmojiTerra(models.Model):
     """
     Class chua cac emoji crawl tu
@@ -17,7 +28,7 @@ class EmojiTerra(models.Model):
     unicode_version = models.CharField(max_length=1000)
     unicode_codes = models.TextField()
 
-    ## SUPPORT
+    # SUPPORT
     android_4_4_kitkat = models.CharField(max_length=1000)
     android_5_1_lollipop = models.CharField(max_length=1000)
     android_6_0_1_marshmallow = models.CharField(max_length=1000)
@@ -31,9 +42,16 @@ class EmojiTerra(models.Model):
     twemoji_2_3 = models.CharField(max_length=1000)
     twemoji_12_1_5 = models.CharField(max_length=1000)
     twemoji_13_0 = models.CharField(max_length=1000)
-    
-    # def __str__(self):
-    #     return self.name
+
+    category = models.ForeignKey(
+        Category,
+        models.SET_NULL,
+        blank=True,
+        null=True,
+    )
+
+    def __str__(self):
+        return self.slug
 
     def get_absolute_url(self):
         return reverse('emoji_detail_slug', args=[str(self.id)])

@@ -1,4 +1,3 @@
-from typing import final
 from bs4 import BeautifulSoup
 import requests
 import json
@@ -7,6 +6,7 @@ import itertools, pandas
 def parsemoji(url):
     final_output = {}
     r = requests.get(url)
+    r.encoding = 'utf-8'
     soup = BeautifulSoup(r.text, 'lxml')
 
 
@@ -21,9 +21,12 @@ def parsemoji(url):
         strong = x.find('strong')
         if strong:
             first = x.find('strong').get_text().strip()
-            whole = "".join(i for i in x.get_text().strip() if i.isascii())
-            last = whole.replace(first, "")
+            whole = "".join(i for i in x.get_text().strip() if i.isascii()).strip()
+            last = whole.replace(first, "").strip()
             meaning[first] = last
+    cat = soup.find(id='meaning').find_all('p')[-1]
+    cate_link = cat.find('a')['href']
+    meaning['Category Link'] = cate_link
     final_output['meaning'] = meaning
 
 
@@ -55,28 +58,32 @@ def parsemoji(url):
     mc_cleaned = moji_codes.set_index(0).squeeze().to_dict()
     final_output['emoji_codes'] = mc_cleaned
 
-    cldr = soup.find(id="unicode-cldr")
-    cldr_rows = [x.get_text().strip() for x in cldr.tbody.find_all('tr')]
-    cldr_dict = dict(zip(cldr_rows[::1], cldr_rows[1::2]))
-    final_output['other_languages'] = cldr_dict
+    cldr = pd_tables[-1]
+    cldr_dict = cldr.set_index('Short Name').squeeze().to_dict()
+    langs = [x[:-1] for x in list(cldr_dict.keys())[:-1:2]]
+    trans1 = list(cldr_dict.keys())[1::2]
+    trans2 = list(cldr_dict.values())[1::2]
+    alltrans = list(zip(trans1, trans2))
+    transdict = dict(zip(langs, alltrans))
+    final_output['other_languages'] = transdict
 
     print (f"Done : {actualmoji}\n==>{url}\n\n")
     return final_output
 
 if __name__=='__main__':
-    with open("emojiterra.json") as fin:
-        jsdata = json.load(fin)
-    emojis = [x[1] for x in jsdata]
-    emojis = list(itertools.chain(*emojis))
-    result = []
+    with open("ejiterra_urls.txt") as fin:
+        ejiterra_urls = [x.strip() for x in fin.readlines()]
     counter = 0
-    for emo in emojis:
-        data = parsemoji(emo['link'])
+    result = []
+    for url in ejiterra_urls:
         counter += 1
-        print(f"{counter}...Parsing : {emo['link']}")
-        emocopy = emo
-        emocopy['data'] = data
-        result.append(emocopy)
+        print(f"{counter}...Parsing : {url}")
+        data = parsemoji(url)
+        result.append(data)
     with open("emojiterra_single.json", "w") as fout:
         sss = json.dumps(result, indent=2)
         fout.write(sss)
+
+    # dd = parsemoji("https://emojiterra.com/kissing-face/")
+    # print(dd)
+    # print(json.dumps(dd, indent=2))
