@@ -26,7 +26,7 @@ class Command(BaseCommand):
                         'slug':slug,
                     },
                 )
-                print(f"Cate{cate[0].name}")
+                print(f"Cate{cate}")
                 for emocode in emojilist:
                     print(f"Saving {emocode}")
                     try:

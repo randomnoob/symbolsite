@@ -9,17 +9,29 @@
 <div class="container theme">
     <div class="row pt-3">
         <div class="col-12 col-md-8 order-2 order-md-1">
+
             <div class="col-12 col-sm-6 col-lg-4">
-                
+                {% if featured  %}
+                {% for heading, subcat in featured.items %}
+
                 <div class="card bg-light">
                     <div class="card-body">
-                        <h4 class="card-title">Bologna</h4>
-                        <h6 class="card-subtitle mb-2">Emilia-Romagna Region, Italy</h6>
-                        <p class="card-text">It is the seventh most populous city in Italy, at the heart of a
-                            metropolitan area of about one million people. </p>
+                        <h4 class="card-title">{{heading}}</h4>
+                        <p class="card-text">
+                            <ul>
+                                {% for catname, link in subcat.items %}
+                                <li><a href="{{link}}">{{catname}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </p>
                     </div>
                 </div>
+                {% endfor %}
+                {% endif %}
+
+                
             </div>
+
         </div>
     </div>
 </div>

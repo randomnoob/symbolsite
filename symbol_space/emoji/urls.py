@@ -3,10 +3,10 @@ from django.shortcuts import redirect
 from django.views.generic import TemplateView
 
 
-from .views import EmojiTerraDetail, CategoryView, CategoryListView
+from .views import EmojiTerraDetail, CategoryView, CategoryListView, HomeView
 
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="bsbay_home.html"), name="bsbay_home"),
+    path("", HomeView.as_view(), name="emoji_home"),
     path("categories/", CategoryListView.as_view(), name="category_all"),
     path("c/<slug:slug>/", CategoryView.as_view(), name="category_detail"),
     # path("versions", UnicodeVersionView.as_view(), name="all_versions"),

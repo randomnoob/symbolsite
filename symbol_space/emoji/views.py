@@ -6,12 +6,14 @@ from django.views.generic import TemplateView
 from django.shortcuts import render
 from django.db.models import Max, Min
 from .models import Category, EmojiTerra
+from .utils import get_featured_links
 
 # Create your views here.
 
+
 def get_random_emoji(num=15):
     """
-    get random 10 emoji from db 
+    get random 10 emoji from db
     https://books.agiliq.com/projects/django-orm-cookbook/en/latest/random.html
     """
     # emoji = list(EmojiTerra.objects.all())
@@ -23,57 +25,54 @@ def get_random_emoji(num=15):
 
     max_id = EmojiTerra.objects.all().aggregate(max_id=Max("id"))['max_id']
     min_id = EmojiTerra.objects.all().aggregate(min_id=Min("id"))['min_id']
-    rand_pk = [random.randint(min_id, max_id) for x in range(1,num)]
+    rand_pk = [random.randint(min_id, max_id) for x in range(1, num)]
     emoji = EmojiTerra.objects.filter(id__in=rand_pk)
     return emoji
 
 
+
+
+
 class HomeView(TemplateView):
-    template_name = 'bsbay_home.html'
+    template_name= 'bsbay_home.html'
+
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
-        context = super().get_context_data(**kwargs)
+        context= super().get_context_data(**kwargs)
         # Add in a QuerySet
-        version_obj_list = {}
-        for ver in unicode_version_list:
-            version_objects = EmojiTerra.objects.filter(unicode_version__contains=ver)
-            version_obj_list[ver] = version_objects
-
-        context['versions'] = version_obj_list
-        context['random_emoji'] = get_random_emoji()
+        context['featured']= get_featured_links()
         return context
-
 
 
 class EmojiTerraDetail(DetailView):
-    model = EmojiTerra
-    template_name = 'bsbay_detail.html'
+    model= EmojiTerra
+    template_name= 'bsbay_detail.html'
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
-        context = super().get_context_data(**kwargs)
+        context= super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
         if context.get('object'):
-            unicode_codes = context.get('object').unicode_codes
-            jsonized = json.loads(str(unicode_codes))
-            context['hexcodes'] = jsonized
-            context['random_emoji'] = get_random_emoji()
+            unicode_codes= context.get('object').unicode_codes
+            jsonized= json.loads(str(unicode_codes))
+            context['hexcodes']= jsonized
+            context['random_emoji']= get_random_emoji()
         return context
-
-
 
 
 class CategoryView(DetailView):
-    template_name = 'bsbay_category.html'
-    model = Category
+    template_name= 'bsbay_category.html'
+    model= Category
+
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
-        context = super().get_context_data(**kwargs)
+        context= super().get_context_data(**kwargs)
         # Add in a QuerySet
-        context['random_emoji'] = get_random_emoji()
+        context['random_emoji']= get_random_emoji()
         return context
 
+
 class CategoryListView(ListView):
-    model = Category
-    template_name = 'bsbay_category_all.html'
+    model= Category
+    template_name= 'bsbay_category_all.html'
