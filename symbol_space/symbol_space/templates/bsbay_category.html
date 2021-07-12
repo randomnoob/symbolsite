@@ -1,34 +1,40 @@
 {% extends 'bsbay.html' %}
 
-{% block page_title %}{{ object.name }} Emoji {{object.emoji}}{{object.emoji}}{{object.emoji}}{% endblock %}
+{% block page_title %}{{ object.name }} Emoji{% endblock %}
 
-{% block h1 %}{{object.name}} Emoji ({{object.emoji}}{{object.emoji}}{{object.emoji}}){% endblock %}
+{% block h1 %}        {{ object.name }} Emoji    {% endblock %}
 
 {% block content %}
 
 <div class="container theme">
     <div class="row pt-3">
         <div class="col-12 col-md-8 order-2 order-md-1">
-{% for catname, emojilist in catdict.items %}
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h2 class="card-title">{{catname}} Emoji</h2>
-                            <p>
-                                {% for emoji in emojilist %}
-                                {{ emoji.emoji }}
-                                {% endfor %}
-                                &nbsp;
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-{% endfor %}
 
+            <p>{{object.description}}</p>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Emoji</th>
+                    <th scope="col">Unicode name</th>
+                    <th scope="col">Emoji Keywords</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for emoji in object.emojiterra_set.all %}
+                  <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td><a href="{% url 'emoji_detail' emoji.slug%}" title="{{emoji.name}}">{{emoji.emoji}}</a></td>
+                    <td><a href="{% url 'emoji_detail' emoji.slug%}" title="{{emoji.name}}">{{emoji.name}}</a></td>
+                    <td>{{emoji.unicode_keywords}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              
 
         </div>
+        {% include "bsbay_component/sidebar.html" %}
     </div>
 </div>
 

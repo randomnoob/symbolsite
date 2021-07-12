@@ -43,12 +43,7 @@ class EmojiTerra(models.Model):
     twemoji_12_1_5 = models.CharField(max_length=1000)
     twemoji_13_0 = models.CharField(max_length=1000)
 
-    category = models.ForeignKey(
-        Category,
-        models.SET_NULL,
-        blank=True,
-        null=True,
-    )
+    category = models.ManyToManyField(Category)
 
     def __str__(self):
         return self.slug

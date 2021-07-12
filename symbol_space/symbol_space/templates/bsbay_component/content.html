@@ -4,28 +4,29 @@
 
             <div class="row">
                 <div class="col-sm-6">
-                  <div class="card text-center">
-                    <div class="card-body">
-                      <h2 class="card-title">Copy the {{object.name}} Emoji</h2>
-                      <input type="card-text bigmoji" id="copy-paste" value="{{ object.emoji }}">
-                      <!-- <p class="card-text bigmoji">{{ object.emoji }}</p> -->
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h2 class="card-title">Copy the {{object.name}} Emoji</h2>
+                            <input type="card-text bigmoji" id="copy-paste" value="{{ object.emoji }}">
+                            <!-- <p class="card-text bigmoji">{{ object.emoji }}</p> -->
+                        </div>
                     </div>
-                  </div>
                 </div>
                 <div class="col-sm-6">
-                  <div class="card text-center">
-                    <div class="card-body">
-                        <h2 class="card-title">{{object.name}} Emoji Image</h2>
-                        <p class="card-text bigmoji"><img src="{{object.android_11_0}}" width="200" height="200" alt="{{object.name}} Emoji Image"></p>
-                      </div>
-                  </div>
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h2 class="card-title">{{object.name}} Emoji Image</h2>
+                            <p class="card-text bigmoji"><img src="{{object.android_11_0}}" width="200" height="200"
+                                    alt="{{object.name}} Emoji Image"></p>
+                        </div>
+                    </div>
                 </div>
-              </div>
+            </div>
 
 
 
 
-
+            
             <div class="card card-details">
                 <div class="card-header">
                     <h2>About the {{object.name}} Emoji</h2>
@@ -52,6 +53,10 @@
                             <tr>
                                 <th>Unicode Version:</th>
                                 <td>{{object.unicode_version}}</td>
+                            </tr>
+                            <tr>
+                                <th>Unicode Codepoints:</th>
+                                <td>{{object.unicode_codepoints}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -85,323 +90,270 @@
 
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="/emoji/{{object.name|slugify}}" id="{{object.name|slugify}}"> -->
-                            <div class="d-flex justify-content-between">
-                                <div class="text-center d-flex justify-content-center">
-                                    <h4>Android 4.4 KitKat</h4>
-                                </div>
-                                <div class="text-success">
-                                    {% if object.android_4_4_kitkat != "No" %}
-                                    <img src="{{object.android_4_4_kitkat}}" width="128" height="128"
-                                        alt="Android 4.4 KitKat">
-                                    {% else %}
-                                    Not supported
-                                    {% endif %}
-                                </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="text-center d-flex justify-content-center">
+                                <h4>Android 4.4 KitKat</h4>
                             </div>
+                            <div class="text-success">
+                                {% if object.android_4_4_kitkat != "No" %}
+                                <img src="{{object.android_4_4_kitkat}}" width="128" height="128"
+                                    alt="Android 4.4 KitKat">
+                                {% else %}
+                                Not supported
+                                {% endif %}
+                            </div>
+                        </div>
                         <!-- </a> -->
                     </li>
                     <hr>
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="/emoji/{{object.name|slugify}}" id="{{object.name|slugify}}"> -->
-                            <div class="d-flex justify-content-between">
-                                <div class="text-center d-flex justify-content-center">
-                                    <h4>Android 5.1 Lollipop</h4>
-                                </div>
-                                <div class="text-success">
-                                    {% if object.android_5_1_lollipop != "No" %}
-                                    <img src="{{object.android_5_1_lollipop}}" width="128" height="128"
-                                        alt="Android 5.1 Lollipop">
-                                    {% else %}
-                                    Not supported
-                                    {% endif %}
-                                </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="text-center d-flex justify-content-center">
+                                <h4>Android 5.1 Lollipop</h4>
                             </div>
-                        <!-- </a> -->
-                    </li>
-                    <hr>
-
-                    <li class="nav-item">
-                        <!-- <a class="nav-link" href="/emoji/{{object.name|slugify}}" id="{{object.name|slugify}}"> -->
-                            <div class="d-flex justify-content-between">
-                                <div class="text-center d-flex justify-content-center">
-                                    <h4>Android 6.0.1 Marshmallow</h4>
-                                </div>
-                                <div class="text-success">
-                                    {% if object.android_6_0_1_marshmallow != "No" %}
-                                    <img src="{{object.android_6_0_1_marshmallow}}" width="128" height="128"
-                                        alt="Android 6.0.1 Marshmallow">
-                                    {% else %}
-                                    Not supported
-                                    {% endif %}
-                                </div>
+                            <div class="text-success">
+                                {% if object.android_5_1_lollipop != "No" %}
+                                <img src="{{object.android_5_1_lollipop}}" width="128" height="128"
+                                    alt="Android 5.1 Lollipop">
+                                {% else %}
+                                Not supported
+                                {% endif %}
                             </div>
+                        </div>
                         <!-- </a> -->
                     </li>
                     <hr>
 
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="/emoji/{{object.name|slugify}}" id="{{object.name|slugify}}"> -->
-                            <div class="d-flex justify-content-between">
-                                <div class="text-center d-flex justify-content-center">
-                                    <h4>Android 7.1.1 Nougat</h4>
-                                </div>
-                                <div class="text-success">
-                                    {% if object.android_7_1_1_nougat != "No" %}
-                                    <img src="{{object.android_7_1_1_nougat}}" width="128" height="128"
-                                        alt="Android 7.1.1 Nougat">
-                                    {% else %}
-                                    Not supported
-                                    {% endif %}
-                                </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="text-center d-flex justify-content-center">
+                                <h4>Android 6.0.1 Marshmallow</h4>
                             </div>
+                            <div class="text-success">
+                                {% if object.android_6_0_1_marshmallow != "No" %}
+                                <img src="{{object.android_6_0_1_marshmallow}}" width="128" height="128"
+                                    alt="Android 6.0.1 Marshmallow">
+                                {% else %}
+                                Not supported
+                                {% endif %}
+                            </div>
+                        </div>
                         <!-- </a> -->
                     </li>
                     <hr>
 
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="/emoji/{{object.name|slugify}}" id="{{object.name|slugify}}"> -->
-                            <div class="d-flex justify-content-between">
-                                <div class="text-center d-flex justify-content-center">
-                                    <h4>Android 8.0 Oreo</h4>
-                                </div>
-                                <div class="text-success">
-                                    {% if object.android_8_0_oreo != "No" %}
-                                    <img src="{{object.android_8_0_oreo}}" width="128" height="128"
-                                        alt="Android 8.0 Oreo">
-                                    {% else %}
-                                    Not supported
-                                    {% endif %}
-                                </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="text-center d-flex justify-content-center">
+                                <h4>Android 7.1.1 Nougat</h4>
                             </div>
+                            <div class="text-success">
+                                {% if object.android_7_1_1_nougat != "No" %}
+                                <img src="{{object.android_7_1_1_nougat}}" width="128" height="128"
+                                    alt="Android 7.1.1 Nougat">
+                                {% else %}
+                                Not supported
+                                {% endif %}
+                            </div>
+                        </div>
                         <!-- </a> -->
                     </li>
                     <hr>
 
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="/emoji/{{object.name|slugify}}" id="{{object.name|slugify}}"> -->
-                            <div class="d-flex justify-content-between">
-                                <div class="text-center d-flex justify-content-center">
-                                    <h4>Android 9.0 Pie</h4>
-                                </div>
-                                <div class="text-success">
-                                    {% if object.android_9_0_pie != "No" %}
-                                    <img src="{{object.android_9_0_pie}}" width="128" height="128"
-                                        alt="Android 9.0 Pie">
-                                    {% else %}
-                                    Not supported
-                                    {% endif %}
-                                </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="text-center d-flex justify-content-center">
+                                <h4>Android 8.0 Oreo</h4>
                             </div>
+                            <div class="text-success">
+                                {% if object.android_8_0_oreo != "No" %}
+                                <img src="{{object.android_8_0_oreo}}" width="128" height="128" alt="Android 8.0 Oreo">
+                                {% else %}
+                                Not supported
+                                {% endif %}
+                            </div>
+                        </div>
                         <!-- </a> -->
                     </li>
                     <hr>
 
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="/emoji/{{object.name|slugify}}" id="{{object.name|slugify}}"> -->
-                            <div class="d-flex justify-content-between">
-                                <div class="text-center d-flex justify-content-center">
-                                    <h4>Android 10.0</h4>
-                                </div>
-                                <div class="text-success">
-                                    {% if object.android_10_0 != "No" %}
-                                    <img src="{{object.android_10_0}}" width="128" height="128" alt="Android 10.0">
-                                    {% else %}
-                                    Not supported
-                                    {% endif %}
-                                </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="text-center d-flex justify-content-center">
+                                <h4>Android 9.0 Pie</h4>
                             </div>
+                            <div class="text-success">
+                                {% if object.android_9_0_pie != "No" %}
+                                <img src="{{object.android_9_0_pie}}" width="128" height="128" alt="Android 9.0 Pie">
+                                {% else %}
+                                Not supported
+                                {% endif %}
+                            </div>
+                        </div>
                         <!-- </a> -->
                     </li>
                     <hr>
 
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="/emoji/{{object.name|slugify}}" id="{{object.name|slugify}}"> -->
-                            <div class="d-flex justify-content-between">
-                                <div class="text-center d-flex justify-content-center">
-                                    <h4>Android 11.0</h4>
-                                </div>
-                                <div class="text-success">
-                                    {% if object.android_11_0 != "No" %}
-                                    <img src="{{object.android_11_0}}" width="128" height="128" alt="Android 11.0">
-                                    {% else %}
-                                    Not supported
-                                    {% endif %}
-                                </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="text-center d-flex justify-content-center">
+                                <h4>Android 10.0</h4>
                             </div>
+                            <div class="text-success">
+                                {% if object.android_10_0 != "No" %}
+                                <img src="{{object.android_10_0}}" width="128" height="128" alt="Android 10.0">
+                                {% else %}
+                                Not supported
+                                {% endif %}
+                            </div>
+                        </div>
                         <!-- </a> -->
                     </li>
                     <hr>
 
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="/emoji/{{object.name|slugify}}" id="{{object.name|slugify}}"> -->
-                            <div class="d-flex justify-content-between">
-                                <div class="text-center d-flex justify-content-center">
-                                    <h4>FxEmojis 1.7.9</h4>
-                                </div>
-                                <div class="text-success">
-                                    {% if object.fxemojis_1_7_9 != "No" %}
-                                    <img src="{{object.fxemojis_1_7_9}}" width="128" height="128" alt="FxEmojis 1.7.9">
-                                    {% else %}
-                                    Not supported
-                                    {% endif %}
-                                </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="text-center d-flex justify-content-center">
+                                <h4>Android 11.0</h4>
                             </div>
+                            <div class="text-success">
+                                {% if object.android_11_0 != "No" %}
+                                <img src="{{object.android_11_0}}" width="128" height="128" alt="Android 11.0">
+                                {% else %}
+                                Not supported
+                                {% endif %}
+                            </div>
+                        </div>
                         <!-- </a> -->
                     </li>
                     <hr>
 
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="/emoji/{{object.name|slugify}}" id="{{object.name|slugify}}"> -->
-                            <div class="d-flex justify-content-between">
-                                <div class="text-center d-flex justify-content-center">
-                                    <h4>OpenMoji 12.2</h4>
-                                </div>
-                                <div class="text-success">
-                                    {% if object.openmoji_12_2 != "No" %}
-                                    <img src="{{object.openmoji_12_2}}" width="128" height="128" alt="OpenMoji 12.2">
-                                    {% else %}
-                                    Not supported
-                                    {% endif %}
-                                </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="text-center d-flex justify-content-center">
+                                <h4>FxEmojis 1.7.9</h4>
                             </div>
+                            <div class="text-success">
+                                {% if object.fxemojis_1_7_9 != "No" %}
+                                <img src="{{object.fxemojis_1_7_9}}" width="128" height="128" alt="FxEmojis 1.7.9">
+                                {% else %}
+                                Not supported
+                                {% endif %}
+                            </div>
+                        </div>
                         <!-- </a> -->
                     </li>
                     <hr>
 
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="/emoji/{{object.name|slugify}}" id="{{object.name|slugify}}"> -->
-                            <div class="d-flex justify-content-between">
-                                <div class="text-center d-flex justify-content-center">
-                                    <h4>Twemoji 2.3</h4>
-                                </div>
-                                <div class="text-success">
-                                    {% if object.twemoji_2_3 != "No" %}
-                                    <img src="{{object.twemoji_2_3}}" width="128" height="128" alt="Twemoji 2.3">
-                                    {% else %}
-                                    Not supported
-                                    {% endif %}
-                                </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="text-center d-flex justify-content-center">
+                                <h4>OpenMoji 12.2</h4>
                             </div>
+                            <div class="text-success">
+                                {% if object.openmoji_12_2 != "No" %}
+                                <img src="{{object.openmoji_12_2}}" width="128" height="128" alt="OpenMoji 12.2">
+                                {% else %}
+                                Not supported
+                                {% endif %}
+                            </div>
+                        </div>
                         <!-- </a> -->
                     </li>
                     <hr>
 
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="/emoji/{{object.name|slugify}}" id="{{object.name|slugify}}"> -->
-                            <div class="d-flex justify-content-between">
-                                <div class="text-center d-flex justify-content-center">
-                                    <h4>Twemoji 12.1.5</h4>
-                                </div>
-                                <div class="text-success">
-                                    {% if object.twemoji_12_1_5 != "No" %}
-                                    <img src="{{object.twemoji_12_1_5}}" width="128" height="128" alt="Twemoji 12.1.5">
-                                    {% else %}
-                                    Not supported
-                                    {% endif %}
-                                </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="text-center d-flex justify-content-center">
+                                <h4>Twemoji 2.3</h4>
                             </div>
+                            <div class="text-success">
+                                {% if object.twemoji_2_3 != "No" %}
+                                <img src="{{object.twemoji_2_3}}" width="128" height="128" alt="Twemoji 2.3">
+                                {% else %}
+                                Not supported
+                                {% endif %}
+                            </div>
+                        </div>
                         <!-- </a> -->
                     </li>
                     <hr>
 
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="/emoji/{{object.name|slugify}}" id="{{object.name|slugify}}"> -->
-                            <div class="d-flex justify-content-between">
-                                <div class="text-center d-flex justify-content-center">
-                                    <h4>Twemoji 13.0</h4>
-                                </div>
-                                <div class="text-success">
-                                    {% if object.twemoji_13_0 != "No" %}
-                                    <img src="{{object.twemoji_13_0}}" width="128" height="128" alt="Twemoji 13.0">
-                                    {% else %}
-                                    Not supported
-                                    {% endif %}
-                                </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="text-center d-flex justify-content-center">
+                                <h4>Twemoji 12.1.5</h4>
                             </div>
+                            <div class="text-success">
+                                {% if object.twemoji_12_1_5 != "No" %}
+                                <img src="{{object.twemoji_12_1_5}}" width="128" height="128" alt="Twemoji 12.1.5">
+                                {% else %}
+                                Not supported
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- </a> -->
+                    </li>
+                    <hr>
+
+                    <li class="nav-item">
+                        <!-- <a class="nav-link" href="/emoji/{{object.name|slugify}}" id="{{object.name|slugify}}"> -->
+                        <div class="d-flex justify-content-between">
+                            <div class="text-center d-flex justify-content-center">
+                                <h4>Twemoji 13.0</h4>
+                            </div>
+                            <div class="text-success">
+                                {% if object.twemoji_13_0 != "No" %}
+                                <img src="{{object.twemoji_13_0}}" width="128" height="128" alt="Twemoji 13.0">
+                                {% else %}
+                                Not supported
+                                {% endif %}
+                            </div>
+                        </div>
                         <!-- </a> -->
                     </li>
                     <hr>
                 </ul>
             </div>
 
-
-        </div>
-        <div class="col-12 col-md-4 order-1 order-md-2 the-sidebar">
-            <div class="most-wanted px-2 py-4">
-                <div class="text-center py-2"><a class="btn btn-block btn-lg btn-success"
-                        href="/emoji/smiling-face-with-heart-eyes/""><h2>😍 Most Wanted</h2></a></div>
-
-                <ul class=" list-unstyled py-4 px-3">
-                        <li><a href="/emoji/spring"><span>🌷</span> Spring</a></li>
-                        <li><a href="/emoji/hearts"><span>❤️</span> Hearts</a></li>
-                        <li><a href="/emoji/shopping"><span>🛍️</span> Shopping</a></li>
-                        <p></p>
-                        <li><a href="/emoji/hugging-face"><span>🤗</span> Hugging Face</a></li>
-                        <li><a href="/emoji/heavy-check-mark"><span>✔️</span> Check Mark</a></li>
-                        <li><a href="/emoji/four-leaf-clover"><span>🍀</span> Four Leaf Clover</a></li>
-                        <li><a href="/emoji/peach"><span>🍑</span> Peach</a></li>
-                        <li><a href="/emoji/fire"><span>🔥</span> Fire</a></li>
-                        <li><a href="/emoji/frowning-face"><span>☹️</span> Frowning Face</a></li>
-                        <li><a href="/emoji/avocado"><span>🥑</span> Avocado</a></li>
-                        <li><a href="/emoji/female-sign"><span>♀️</span> Female Sign</a></li>
-                        <li><a href="/emoji/smiling-face-with-smiling-eyes"><span>😊</span> Smiling Face With
-                                Smiling Eyes</a></li>
-                        <li><a href="/emoji/smiling-face-with-horns"><span>😈</span> Smiling Face With
-                                Horns</a></li>
-                        </ul>
-                </div>
-
-
-                <div class="most-wanted px-2 py-4">
-                    <div class="text-center py-2"><a class="btn btn-block btn-lg btn-success"
-                            href="/version""><h2>🔢 Unicode Version</h2></a></div>
-                
-                    <ul class=" list-unstyled py-4 px-3">
-                            <li><a href="/version/unicode-13-0/">Unicode 13.0 (2020)</a></li>
-                            <li><a href="/version/unicode-12-0/">Unicode 12.0 (2019)</a></li>
-                            <li><a href="/version/unicode-11-0/">Unicode 11.0 (2018)</a></li>
-                            <li><a href="/version/unicode-10-0/">Unicode 10.0 (2017)</a></li>
-                            <li><a href="/version/unicode-9-0/">Unicode 9.0 (2016)</a></li>
-                            <li><a href="/version/unicode-8-0/">Unicode 8.0 (2015)</a></li>
-                            <li><a href="/version/unicode-7-0/">Unicode 7.0 (2014)</a></li>
-                            <li><a href="/version/unicode-6-1/">Unicode 6.1 (2012)</a></li>
-                            <li><a href="/version/unicode-6-0/">Unicode 6.0 (2010)</a></li>
-                            <li><a href="/version/unicode-5-2/">Unicode 5.2 (2009)</a></li>
-                            <li><a href="/version/unicode-5-1/">Unicode 5.1 (2008)</a></li>
-                            <li><a href="/version/unicode-4-1/">Unicode 4.1 (2005)</a></li>
-                            <li><a href="/version/unicode-4-0/">Unicode 4.0 (2003)</a></li>
-                            <li><a href="/version/unicode-3-2/">Unicode 3.2 (2002)</a></li>
-                            <li><a href="/version/unicode-3-0/">Unicode 3.0 (1999)</a></li>
-                            <li><a href="/version/unicode-1-1/">Unicode 1.1 (1993)</a></li>
-                            </ul>
-
-                    </div>
-
-
-                    <div class="most-wanted px-2 py-4">
-                        <div class="text-center py-2"><a class="btn btn-block btn-lg btn-success"
-                                href="/categories""><h2>🔠 Categories</h2></a></div>
-                    
-                            <ul class="list-unstyled px-3">
-                                <li><a href="/categories/activities/"><span>🎮</span> Activities</a></li>
-                                <li><a href="/categories/animals/"><span>🐢</span> Animals &amp; Nature</a>
-                                </li>
-                                <li><a href="/categories/faces/"><span>😃</span> Faces &amp; Emotions</a>
-                                </li>
-                                <li><a href="/categories/flags/"><span>🏁</span> Flags</a></li>
-                                <li><a href="/categories/food/"><span>🍏</span> Food &amp; Drink</a></li>
-                                <li><a href="/categories/objects/"><span>📷</span> Objects</a></li>
-                                <li><a href="/categories/people-body/"><span>👋</span> People &amp; Body</a>
-                                </li>
-                                <li><a href="/categories/symbols/"><span>💯</span> Symbols &amp; Signs</a>
-                                </li>
-                                <li><a href="/categories/travel/"><span>🚢</span> Travel &amp; Places</a>
-                                </li>
-                            </ul>
-                        </div>
-
-
-
-                </div>
+            <div class="row">
+            <a class="btn btn-block btn-lg btn-success" href="{% url 'category_detail' 'top-100-emoji' %}"><h2>🔝 TOP 100</h2></a>
             </div>
+
+
+
+            <div class="row related-emoji">
+                {% for emoji in random_emoji|slice:"10:15" %}
+                <div class="col-sm-6 px-4 py-4">
+                    <div class="card bg-light text-center">
+                        <div class="card-body">
+                            <h4 class="card-title" style="font-size: 3em;">{{emoji.emoji}}</h4>
+                            <a class="card-text" href="{% url 'emoji_detail' emoji.slug %}">{{emoji.name}}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- /.col -->
+
+             </div>
+             <!-- /.row -->
+
+
+
+            
         </div>
+
+
+        {% include "bsbay_component/sidebar.html" %}
+

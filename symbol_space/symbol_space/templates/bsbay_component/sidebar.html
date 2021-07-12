@@ -1,0 +1,70 @@
+<div class="col-12 col-md-4 order-1 order-md-2 the-sidebar">
+    <div class="most-wanted px-2 py-4">
+        <div class="text-center py-2"><a class="btn btn-block btn-lg btn-success"
+                href="/emoji/smiling-face-with-heart-eyes/""><h2>😍 Most Wanted</h2></a></div>
+
+        <ul class=" list-unstyled py-4 px-3">
+                <li><a href="/emoji/spring"><span>🌷</span> Spring</a></li>
+                <li><a href="/emoji/hearts"><span>❤️</span> Hearts</a></li>
+                <li><a href="/emoji/shopping"><span>🛍️</span> Shopping</a></li>
+                {% if random_emoji %}
+                {% for r_emoji in random_emoji|slice:"0:10" %}
+                <li><a href="{% url 'emoji_detail' r_emoji.slug %}">{{r_emoji.emoji}} {{r_emoji.name}}</a></li>
+                {% endfor %}
+                {% endif %}
+                </ul>
+        </div>
+
+
+        <div class="most-wanted px-2 py-4">
+            <div class="text-center py-2"><span class="btn btn-block btn-lg btn-success"><h2>🔢 Unicode Version</h2></span></div>
+        
+            <ul class=" list-unstyled py-4 px-3">
+                    <li><a href="{% url 'category_detail' 'unicode-130-emoji' %}">Unicode 13.0 (2020)</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-120-emoji' %}">Unicode 12.0 (2019)</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-110-emoji' %}">Unicode 11.0 (2018)</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-100-emoji' %}">Unicode 10.0 (2017)</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-90-emoji' %}">Unicode 9.0 (2016)</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-80-emoji' %}">Unicode 8.0 (2015)</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-70-emoji' %}">Unicode 7.0 (2014)</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-61-emoji' %}">Unicode 6.1 (2012)</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-60-emoji' %}">Unicode 6.0 (2010)</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-52-emoji' %}">Unicode 5.2 (2009)</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-51-emoji' %}">Unicode 5.1 (2008)</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-41-emoji' %}">Unicode 4.1 (2005)</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-40-emoji' %}">Unicode 4.0 (2003)</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-32-emoji' %}">Unicode 3.2 (2002)</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-30-emoji' %}">Unicode 3.0 (1999)</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-11-emoji' %}">Unicode 1.1 (1993)</a></li>
+                    </ul>
+
+            </div>
+
+
+            <div class="most-wanted px-2 py-4">
+                <div class="text-center py-2"><span class="btn btn-block btn-lg btn-success"><h2>🔠 Categories</h2></span></div>
+            
+                    <ul class=" list-unstyled px-3">
+                        <li><a href="/c/activities/"><span>🎮</span> Activities</a></li>
+                        <li><a href="/c/animals/"><span>🐢</span> Animals &amp; Nature</a>
+                        </li>
+                        <li><a href="/c/faces/"><span>😃</span> Faces &amp; Emotions</a>
+                        </li>
+                        <li><a href="/c/flags/"><span>🏁</span> Flags</a></li>
+                        <li><a href="/c/food/"><span>🍏</span> Food &amp; Drink</a></li>
+                        <li><a href="/c/objects/"><span>📷</span> Objects</a></li>
+                        <li><a href="/c/people-body/"><span>👋</span> People &amp; Body</a>
+                        </li>
+                        <li><a href="/c/symbols/"><span>💯</span> Symbols &amp; Signs</a>
+                        </li>
+                        <li><a href="/c/travel/"><span>🚢</span> Travel &amp; Places</a>
+                        </li>
+                        </ul>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

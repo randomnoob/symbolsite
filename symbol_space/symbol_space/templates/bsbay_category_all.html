@@ -1,0 +1,41 @@
+{% extends 'bsbay.html' %}
+
+{% block page_title %}All Emoji by categories{% endblock %}
+
+{% block h1 %}        All Emoji by categories    {% endblock %}
+
+{% block content %}
+
+<div class="container theme">
+    <div class="row pt-3">
+      
+        <div class="col-12 col-md-8 order-2 order-md-1">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Category name</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for object in object_list %}
+                  <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td><a href="{% url 'category_detail' object.slug %}" title="{{object.name}}">{{object.name}}</a></td>
+                    <td>{{object.description}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}
