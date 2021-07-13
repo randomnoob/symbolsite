@@ -5,39 +5,70 @@
 {% block h1 %}🐢 SymbolSpace 🌍 | Emoji Copy & Paste | Get to know the meanings of each emoji{% endblock %}
 
 {% block content %}
+<style>
+    .home-content {
+        font-size: 1.3rem;
+        line-height: 2.5rem;
+    }
+</style>
 
 <div class="container theme">
-    <div class="row pt-3">
-        <div class="col-12 col-md-8 order-2 order-md-1">
 
-            <div class="col-12 col-sm-6 col-lg-4">
-                {% if featured  %}
-                {% for heading, subcat in featured.items %}
 
-                <div class="card bg-light">
-                    <div class="card-body">
-                        <h4 class="card-title">{{heading}}</h4>
-                        <p class="card-text">
-                            <ul>
-                                {% for catname, link in subcat.items %}
-                                <li><a href="{{link}}">{{catname}}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </p>
-                    </div>
+    <div class="py-5 home-content">
+        <div class="container">
+          <div class="row hidden-md-up">
+            {% if featured  %}
+            {% for heading, subcat in featured.items %}
+            <div class="col-md-4 px-4 py-4">
+                <div class="card text-center bg-light">
+                  <div class="card-body">
+                    <h4 class="card-title">{{heading}}</h4>
+                    <ul class="card-text list-unstyled">
+                      {% for catname, link in subcat.items %}
+                        <li><a href="{{link}}">{{catname}}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </div>
                 </div>
-                {% endfor %}
-                {% endif %}
-
-                
+              </div>
+              {% endfor %}
+              {% endif %}
+            <div class="col-md-4 px-4 py-4">
+              <div class="card text-center bg-light">
+                <div class="card-body">
+                  <h4 class="card-title">🔢 Unicode version</h4>
+                  <ul class="card-text list-unstyled">
+                    <li><a href="{% url 'category_detail' 'unicode-130-emoji' %}">Unicode 13.0</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-120-emoji' %}">Unicode 12.0</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-110-emoji' %}">Unicode 11.0</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-100-emoji' %}">Unicode 10.0</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-90-emoji' %}">Unicode 9.0</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-80-emoji' %}">Unicode 8.0</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-70-emoji' %}">Unicode 7.0</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-61-emoji' %}">Unicode 6.1</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-60-emoji' %}">Unicode 6.0</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-52-emoji' %}">Unicode 5.2</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-51-emoji' %}">Unicode 5.1</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-41-emoji' %}">Unicode 4.1</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-40-emoji' %}">Unicode 4.0</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-32-emoji' %}">Unicode 3.2</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-30-emoji' %}">Unicode 3.0</a></li>
+                    <li><a href="{% url 'category_detail' 'unicode-11-emoji' %}">Unicode 1.1</a></li>
+                </ul>
+                </div>
+              </div>
             </div>
 
+          </div>
         </div>
-    </div>
+      </div>
+
+
+
 </div>
 
 
-{% include "bsbay_component/sidebar.html" %}
 
 
 
