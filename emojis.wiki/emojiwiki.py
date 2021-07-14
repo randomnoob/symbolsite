@@ -1,4 +1,3 @@
-from typing import final
 from bs4 import BeautifulSoup
 import requests
 import json
@@ -15,16 +14,20 @@ def get_emoji(url):
     print(f"Getting {url}")
     results = {}
     r = requests.get(url)
+    r.encoding = 'utf8'
     soup = BeautifulSoup(r.text, 'lxml')
-
     emoji = soup.find('span', class_='emoji').get_text()
     # STITCHING THEM ALL
     results['emoji'] = emoji
     results['url'] = url
+    h1_name = soup.find('h1').get_text().strip()
+    results['name'] = h1_name.replace(emoji, "").strip()
+
 
 
     h2_titles = soup.find_all('h2')
 
+    # GET INTRO
     try:
         meaning_title = [x for x in h2_titles if "Meaning of" in str(x)][0]
         emoji_intro = next_nearest_sibling(meaning_title, 'p').get_text()
@@ -32,6 +35,7 @@ def get_emoji(url):
     except IndexError:
         pass
 
+    # GET EXAMPLE
     try:
         example_of = [x for x in h2_titles if "Examples of" in str(x)][0]
         emoji_example = next_nearest_sibling(example_of, 'ul')
@@ -40,7 +44,7 @@ def get_emoji(url):
         results['example'] = emoji_example_list
     except IndexError:
         pass
-
+# GET COMBO
     try:
         combo_title = [x for x in h2_titles if "Combinations " in str(x)][0]
         combo_elem = next_nearest_sibling(combo_title, 'ul')
@@ -49,7 +53,7 @@ def get_emoji(url):
         results['combination'] = combo_list
     except IndexError:
         pass
-
+# GET KAOMOJI
     try:
         kaomoji_title = [x for x in h2_titles if "kaomojis" in str(x)][0]
         kaomoji_elem = next_nearest_sibling(kaomoji_title, 'ul')
@@ -58,16 +62,44 @@ def get_emoji(url):
         results['kaomoji'] = kaomoji_list
     except IndexError:
         pass
+# GET IMAGES
+    try:
+        table = soup.find(class_="emoji-pics")
+        if table:
+            names = [x.get_text() for x in table.find_all('td')]
+            links = [x.get('src') for x in table.find_all('img')]
+            results['images'] = dict(zip(names[1:], links))
+    except IndexError:
+        pass
 
-    
+# GET RELATED
+    try:
+        rel_div = soup.find('div', id="Related_Emojis")
+        ul_related = next_nearest_sibling(rel_div, 'ul')
+        results['related_emoji'] = [x.get_text().strip() \
+            for x in ul_related.find_all('span')]
+    except IndexError:
+        pass
+
+
+    # GET TABLES (UNICODE INFO, TRANSLATION)
+    # ADDED SAFE CHECK
     try:
         tables = pandas.read_html(str(soup))
-        infotable = tables[1].set_index(0).squeeze().to_dict()
-        results['unicode_info'] = infotable
-        translation = tables[2].set_index(0).squeeze().to_dict()
-        results['translation'] = translation
+        py_tables = [x.set_index(0).squeeze().to_dict() for x in tables]
+        for t in py_tables:
+            if "Full name" in t.keys():
+                infotable = t
+                results['unicode_info'] = infotable
+            if "Another names, keywords" in t.keys():
+                translation = t
+                results['translation'] = translation
     except (IndexError, ValueError):
         pass
+
+
+    # Returns the final result
+    print(f"NAME : {results['name']}")
     return results
 
 
@@ -81,7 +113,10 @@ if __name__=='__main__':
     for url in urls:
         try:
             data = get_emoji(url)
-            results.append(data)
+            if "Collection" not in data['name']:
+                results.append(data)
+            else:
+                print(f"Not collected {url}")
             print(f"{len(results)}/{len(urls)}")
         except:
             print(f"ERROR ==> {url}")

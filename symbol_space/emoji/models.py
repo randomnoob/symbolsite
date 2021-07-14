@@ -28,7 +28,7 @@ class EmojiTerra(models.Model):
     unicode_categories = models.CharField(max_length=1000)
     unicode_codepoints = models.CharField(max_length=1000)
     unicode_version = models.CharField(max_length=1000)
-    unicode_codes = models.TextField()
+    unicode_codes = models.TextField(blank=True, null=True)
 
     # SUPPORT
     android_4_4_kitkat = models.CharField(max_length=1000)
@@ -52,3 +52,43 @@ class EmojiTerra(models.Model):
 
     def get_absolute_url(self):
         return reverse('emoji_detail_slug', args=[str(self.id)])
+
+
+class EmojiWiki(models.Model):
+    """
+    Class chua cac emoji crawl tu
+    emojis.wiki
+    """
+    name = models.CharField(max_length=1000)
+    emoji = models.CharField(max_length=1000)
+    url = models.CharField(max_length=1000)
+    slug = models.SlugField(unique=True)
+    example = models.TextField(blank=True, null=True)
+    combination = models.TextField(blank=True, null=True)
+    kaomoji = models.TextField(blank=True, null=True)
+    unicode_info = models.TextField(blank=True, null=True)
+    translation = models.TextField()
+    related = models.TextField(blank=True, null=True)
+
+
+    # IMAGES
+    img_apple = models.CharField(max_length=1000, blank=True, null=True)
+    img_google = models.CharField(max_length=1000, blank=True, null=True)
+    img_microsoft = models.CharField(max_length=1000, blank=True, null=True)
+    img_facebook = models.CharField(max_length=1000, blank=True, null=True)
+    img_messenger = models.CharField(max_length=1000, blank=True, null=True)
+    img_twitter = models.CharField(max_length=1000, blank=True, null=True)
+    img_whatsapp = models.CharField(max_length=1000, blank=True, null=True)
+    img_samsung = models.CharField(max_length=1000, blank=True, null=True)
+    img_lg = models.CharField(max_length=1000, blank=True, null=True)
+    img_htc = models.CharField(max_length=1000, blank=True, null=True)
+    img_mozilla = models.CharField(max_length=1000, blank=True, null=True)
+    img_softbank = models.CharField(max_length=1000, blank=True, null=True)
+    img_au_by_kddi = models.CharField(max_length=1000, blank=True, null=True)
+    img_docomo = models.CharField(max_length=1000, blank=True, null=True)
+    img_openmoji = models.CharField(max_length=1000, blank=True, null=True)
+
+
+    def __str__(self):
+        return self.slug
+
