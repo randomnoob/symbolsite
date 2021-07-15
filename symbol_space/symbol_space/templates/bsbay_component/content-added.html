@@ -1,0 +1,26 @@
+
+
+
+
+<div class="row">
+    <span class="btn btn-block btn-lg btn-success" href="{% url 'category_detail' 'top-100-emoji' %}">
+        <h2>🔝 TOP 100</h2>
+    </span>
+</div>
+
+
+<div class="row related-emoji px-4 py-4">
+    {% for emoji in random_emoji|slice:"10:15" %}
+    <div class="col-sm-6 px-4 py-4">
+        <div class="card bg-light text-center">
+            <div class="card-body">
+                <h4 class="card-title" style="font-size: 3em;">{{emoji.emoji}}</h4>
+                <a class="card-text" href="{% url 'emoji_detail' emoji.slug %}">{{emoji.name}}</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- /.col -->
+
+</div>
+<!-- /.row -->

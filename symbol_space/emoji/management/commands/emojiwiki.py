@@ -30,6 +30,7 @@ class Command(BaseCommand):
                     emoji=entry['emoji'],
                     url=entry.get('url'),
                     slug=entry.get('url').split("/")[-2],
+                    intro=entry.get('intro'),
 
                     example = entry.get('example'),
                     combination = entry.get('combination'),

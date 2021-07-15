@@ -26,12 +26,24 @@
 
 
 
-            
+
             <div class="card card-details">
                 <div class="card-header">
                     <h2>About the {{object.name}} Emoji</h2>
                 </div>
                 <div class="card-body">
+                    {% if emoji_wiki %}
+                    {% if emoji_wiki.intro %}
+                    <p class="text-left">
+                        {{emoji_wiki.intro}}
+                        {{emoji_wiki.name}} is often used with other emojis, such as 
+                        {% for v in emoji_wiki.show_related%}
+                        {{v}}, 
+                        {% endfor %}
+                    </p>
+                    {% endif %}
+                    {% endif %}
+                        
                     <table>
                         <tbody>
                             <tr>
@@ -65,8 +77,8 @@
 
 
             <div class="card card-details">
-                <div class="card-header">
-                    <h2>How to type {{object.emoji}} Emoji</h2>
+                <div class="card-header ">
+                    <h2>How to type {{object.name}} Emoji</h2>
                 </div>
                 <div class="card-body">
                     <table>
@@ -82,9 +94,97 @@
                 </div>
             </div>
 
+
+            <!-- Additional details -->
+            {% if emoji_wiki %}
+
+            {% if emoji_wiki.show_example %}
+            <div class="card card-details bg-light">
+                <div class="card-header bg-warning">
+                    <h2>How people use {{emoji_wiki.name}} online</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{% for e in emoji_wiki.show_example %}
+                    <h3>{{e}}</h3>{%endfor%}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if emoji_wiki.show_combination %}
+            <div class="card card-details bg-light">
+                <div class="card-header bg-warning">
+                    <h2>{{emoji_wiki.name}} Combination</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{% for e in emoji_wiki.show_combination %}
+                    <h3>{{e}}</h3>{%endfor%}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if emoji_wiki.show_kaomoji %}
+            <div class="card card-details bg-light">
+                <div class="card-header bg-warning">
+                    <h2>{{emoji_wiki.name}} Equivalent Kaomoji</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-center">{% for e in emoji_wiki.show_kaomoji %}
+                    <h3>{{e}}</h3>{%endfor%}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if emoji_wiki.show_translation %}
+            <div class="card card-details bg-light">
+                <div class="card-header bg-warning">
+                    <h2>{{emoji_wiki.name}} in various languages</h2>
+                </div>
+                <div class="card-body">
+                    <table>
+                        <tbody>
+                            {% for key, value in emoji_wiki.show_translation.items %}
+                            <tr>
+                                <th>{{key}}</th>
+                                <td>{{ value }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+
+
+
+
+
+            <div class="row px-4 py-4 text-center">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>How {{object.name}} emoji look like across platforms</h2>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                    <font style="font-size: 6.5rem!important;height: 7.2rem;line-height: 1.4;">{{emoji_wiki.emoji}}
+                    </font>
+                    <h4 class="text-center px-2 py-2">Your Device</h4>
+                </div>
+
+                {% for key, value in emoji_wiki.show_platforms.items %}
+                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                    <img src="{{value}}" class="h-250 w-250 img-fluid " height="250" width="250" alt="{{key}}">
+                    <h4 class="text-center px-2 py-2">{{key}}</h4>
+                </div>
+                {% endfor %}
+
+            </div>
+
+            <!-- END Additional details -->
+            {% endif %}
+
+
             <div class="see-licenses">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>How {{object.name}} emoji look like</h2>
+                    <h2>{{object.name}} emoji appearance over time</h2>
                 </div>
                 <ul class="nav nav-pills flex-column">
 
@@ -327,33 +427,15 @@
                 </ul>
             </div>
 
-            <div class="row">
-            <a class="btn btn-block btn-lg btn-success" href="{% url 'category_detail' 'top-100-emoji' %}"><h2>🔝 TOP 100</h2></a>
-            </div>
 
 
 
-            <div class="row related-emoji">
-                {% for emoji in random_emoji|slice:"10:15" %}
-                <div class="col-sm-6 px-4 py-4">
-                    <div class="card bg-light text-center">
-                        <div class="card-body">
-                            <h4 class="card-title" style="font-size: 3em;">{{emoji.emoji}}</h4>
-                            <a class="card-text" href="{% url 'emoji_detail' emoji.slug %}">{{emoji.name}}</a>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-                <!-- /.col -->
-
-             </div>
-             <!-- /.row -->
 
 
+            {% include "bsbay_component/content-added.html" %}
 
-            
+
         </div>
 
 
         {% include "bsbay_component/sidebar.html" %}
-

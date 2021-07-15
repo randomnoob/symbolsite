@@ -5,7 +5,7 @@ from django.views.generic.list import ListView
 from django.views.generic import TemplateView
 from django.shortcuts import render
 from django.db.models import Max, Min
-from .models import Category, EmojiTerra
+from .models import Category, EmojiTerra, EmojiWiki
 from .utils import get_featured_links
 
 # Create your views here.
@@ -58,6 +58,9 @@ class EmojiTerraDetail(DetailView):
             jsonized= json.loads(str(unicode_codes))
             context['hexcodes']= jsonized
             context['random_emoji']= get_random_emoji()
+            emoji_wiki = EmojiWiki.objects.filter(emoji=context.get('object').emoji).first()
+            context['emoji_wiki'] = emoji_wiki
+            print("*/**************Shit found!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         return context
 
 

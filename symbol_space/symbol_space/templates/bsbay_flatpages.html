@@ -1,0 +1,36 @@
+{% extends 'bsbay.html' %}
+
+{% block page_title %}{{title}}{% endblock %}
+
+{% block h1 %}{{title}}{% endblock %}
+
+{% block content %}
+<style>
+    .home-content {
+        font-size: 1.3rem;
+        line-height: 2.5rem;
+    }
+</style>
+
+<div class="container theme">
+
+
+    <div class="py-5 home-content">
+        <div class="container">
+          <div class="row hidden-md-up">
+
+            {{content|safe}}
+            
+          </div>
+        </div>
+      </div>
+
+
+
+</div>
+
+
+
+
+
+{% endblock %}

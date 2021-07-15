@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+import json
+import ast
 
 
 class Category(models.Model):
@@ -9,7 +11,7 @@ class Category(models.Model):
     name = models.CharField(max_length=1000)
     slug = models.SlugField(unique=True)
     description = models.TextField(null=True)
-    
+
     def __str__(self):
         return self.slug
 
@@ -63,13 +65,13 @@ class EmojiWiki(models.Model):
     emoji = models.CharField(max_length=1000)
     url = models.CharField(max_length=1000)
     slug = models.SlugField(unique=True)
+    intro = models.TextField(blank=True, null=True)
     example = models.TextField(blank=True, null=True)
     combination = models.TextField(blank=True, null=True)
     kaomoji = models.TextField(blank=True, null=True)
     unicode_info = models.TextField(blank=True, null=True)
     translation = models.TextField()
     related = models.TextField(blank=True, null=True)
-
 
     # IMAGES
     img_apple = models.CharField(max_length=1000, blank=True, null=True)
@@ -88,7 +90,51 @@ class EmojiWiki(models.Model):
     img_docomo = models.CharField(max_length=1000, blank=True, null=True)
     img_openmoji = models.CharField(max_length=1000, blank=True, null=True)
 
-
     def __str__(self):
         return self.slug
 
+    def show_example(self):
+        return self.show_object('example')
+
+    def show_combination(self):
+        return self.show_object('combination')
+
+    def show_kaomoji(self):
+        return self.show_object('kaomoji')
+
+    def show_translation(self):
+        return self.show_object('translation')
+
+    def show_related(self):
+        return self.show_object('related')
+
+    def show_object(self, obj_name):
+        if not hasattr(self, obj_name):
+            return None
+        try:
+            obj = ast.literal_eval(getattr(self, obj_name))
+            if not obj:
+                obj = []
+            return obj
+        except:
+            return []
+
+    def show_platforms(self):
+        platforms = {
+            "Apple": getattr(self, "img_apple"),
+            "Google": getattr(self, "img_google"),
+            "Microsoft": getattr(self, "img_microsoft"),
+            "Facebook": getattr(self, "img_facebook"),
+            "Messenger": getattr(self, "img_messenger"),
+            "Twitter": getattr(self, "img_twitter"),
+            "WhatsApp": getattr(self, "img_whatsapp"),
+            "Samsung": getattr(self, "img_samsung"),
+            "LG": getattr(self, "img_lg"),
+            "HTC": getattr(self, "img_htc"),
+            "Mozilla": getattr(self, "img_mozilla"),
+            "SoftBank": getattr(self, "img_softbank"),
+            "au by KDDI": getattr(self, "img_au_by_kddi"),
+            "Docomo": getattr(self, "img_docomo"),
+            "Openmoji": getattr(self, "img_openmoji"),
+        }
+        return platforms
