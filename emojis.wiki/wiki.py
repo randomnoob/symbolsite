@@ -30,8 +30,12 @@ def get_emoji(url):
     # GET INTRO
     try:
         meaning_title = [x for x in h2_titles if "Meaning of" in str(x)][0]
-        emoji_intro = next_nearest_sibling(meaning_title, 'p').get_text()
+        emoji_intro_html = next_nearest_sibling(meaning_title, 'p')
+        anchor_strings = [x.get_text().strip() for x in emoji_intro_html.find_all('a')]
+        anchor_links = [x['href'] for x in emoji_intro_html.find_all('a')]
+        emoji_intro = emoji_intro_html.get_text()
         results['intro'] = emoji_intro
+        results['anchor'] = dict(zip(anchor_strings, anchor_links))
     except IndexError:
         pass
 

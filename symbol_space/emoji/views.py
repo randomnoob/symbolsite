@@ -60,7 +60,6 @@ class EmojiTerraDetail(DetailView):
             context['random_emoji']= get_random_emoji()
             emoji_wiki = EmojiWiki.objects.filter(emoji=context.get('object').emoji).first()
             context['emoji_wiki'] = emoji_wiki
-            print("*/**************Shit found!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         return context
 
 

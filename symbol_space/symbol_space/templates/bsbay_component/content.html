@@ -29,13 +29,18 @@
 
             <div class="card card-details">
                 <div class="card-header">
-                    <h2>About the {{object.name}} Emoji</h2>
+                    <h2>About The {{object.name|title}} Emoji</h2>
                 </div>
                 <div class="card-body">
                     {% if emoji_wiki %}
                     {% if emoji_wiki.intro %}
                     <p class="text-left">
+                        {% if emoji_wiki.intro_html %}
+                        {{emoji_wiki.intro_html|safe}}
+                        {% endif %}
+                        {% else %}
                         {{emoji_wiki.intro}}
+                        <br>
                         {{emoji_wiki.name}} is often used with other emojis, such as 
                         {% for v in emoji_wiki.show_related%}
                         {{v}}, 

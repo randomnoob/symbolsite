@@ -53,7 +53,7 @@ class EmojiTerra(models.Model):
         return self.slug
 
     def get_absolute_url(self):
-        return reverse('emoji_detail_slug', args=[str(self.id)])
+        return reverse('emoji_detail', args=[str(self.slug)])
 
 
 class EmojiWiki(models.Model):
@@ -66,6 +66,7 @@ class EmojiWiki(models.Model):
     url = models.CharField(max_length=1000)
     slug = models.SlugField(unique=True)
     intro = models.TextField(blank=True, null=True)
+    intro_html = models.TextField(blank=True, null=True)
     example = models.TextField(blank=True, null=True)
     combination = models.TextField(blank=True, null=True)
     kaomoji = models.TextField(blank=True, null=True)
