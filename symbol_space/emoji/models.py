@@ -32,6 +32,8 @@ class EmojiTerra(models.Model):
     unicode_version = models.CharField(max_length=1000)
     unicode_codes = models.TextField(blank=True, null=True)
 
+    twitter_sample = models.TextField(blank=True, null=True)
+
     # SUPPORT
     android_4_4_kitkat = models.CharField(max_length=1000)
     android_5_1_lollipop = models.CharField(max_length=1000)

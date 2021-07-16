@@ -48,6 +48,10 @@
                     </p>
                     {% endif %}
                     {% endif %}
+
+                    {% if object.twitter_sample %}
+                    {{object.twitter_sample}}
+                    {% endif %}
                         
                     <table>
                         <tbody>
@@ -175,10 +179,12 @@
                 </div>
 
                 {% for key, value in emoji_wiki.show_platforms.items %}
+                {% if value %}
                 <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                     <img src="{{value}}" class="h-250 w-250 img-fluid " height="250" width="250" alt="{{key}}">
                     <h4 class="text-center px-2 py-2">{{key}}</h4>
                 </div>
+                {% endif %}
                 {% endfor %}
 
             </div>

@@ -88,8 +88,9 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "symbol_space.users.apps.UsersConfig",
     # EDIT_THIS : Your stuff: custom apps go here
-    "emoji",
-    "fixedpages",
+    "emoji", #Main app
+    "fixedpages", #Show static pages
+    "codetoemoji", ## Lookup code to emoji
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
