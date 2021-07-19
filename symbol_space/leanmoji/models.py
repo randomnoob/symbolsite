@@ -15,5 +15,5 @@ class EmojiTerra(models.Model):
     def __str__(self):
         return self.slug
 
-    def get_absolute_url(self):
-        return reverse('emoji_detail', args=[str(self.slug)])
+    # def get_absolute_url(self):
+    #     return reverse('emoji_detail', args=[str(self.slug)])
