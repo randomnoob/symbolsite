@@ -1,0 +1,23 @@
+
+<table class="{% if classname %} {{classname}} {%else%} table {% endif %}">
+    {% if header %}
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        {% for colname in header %}
+        <th scope="col">{{colname}}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    {% endif %}
+    <tbody>
+        {% for row in obj %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        {% for cell in row %}
+        <td>{{cell}}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>

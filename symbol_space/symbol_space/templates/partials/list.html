@@ -1,0 +1,7 @@
+{% for element in obj %}
+
+<ul class="{% if classname %} {{classname}} {%else%}  card-text list-unstyled  {% endif %}">
+    <li>{% element %}</li>
+</ul>
+
+{% endfor %}
