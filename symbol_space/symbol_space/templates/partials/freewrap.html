@@ -1,0 +1,11 @@
+{% if div %}
+<div class="{% if classname %} {{classname}} {%else%}wrapper{% endif %}">{{element}}</div>
+{% endif %}
+
+{% if span %}
+<span class="{% if classname %} {{classname}} {%else%}wrapper{% endif %}">{{element}}</span>
+{% endif %}
+
+{% if input %}
+<input class="{% if classname %} {{classname}} {%else%}wrapper{% endif %}">{{element}}</input>
+{% endif %}

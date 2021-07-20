@@ -1,0 +1,141 @@
+{% extends 'bsbay.html' %}
+
+{% block page_title %}{{title|upper}}{% endblock %}
+
+{% block h1 %}{{title}}{% endblock %}
+
+{% block head_script %}
+
+<style>
+.copy-box .small{
+	font-size:14px;
+	color:var(--grey);
+}
+
+.copy-value{
+	font-size:30px;
+	position:relative;
+    border: 4px solid #eee;
+    padding: 20px 22px;
+    border-radius: 7px;
+}
+.copy-box p .value{
+	padding:0 16px;
+}
+.copy-box p .value:hover{
+	cursor:pointer;
+}
+.copy-value:hover{
+	border: 4px solid #3173b7;
+}
+
+.copy-status .copy, .copied{
+	transition: ease .3s;
+	/* position:absolute;
+	left:100%; */
+	font-size:20px;
+	line-height:30px;
+}
+.copy-status .copy{
+	color:var(--grey);
+}
+.copied{
+	color:var(--success);
+}
+
+.copy-status .hide{opacity:0;}
+
+.copy-box input{
+	font-size:20px;
+	width:300px;
+	padding: 20px 22px;
+	border-radius:8px;
+	background-color:var(--lightgrey);
+	border-style:none;
+	margin-top:30px;
+}
+
+.copybox .snippet{
+    position: absolute;
+    background: #3173b7;
+    border-radius: 3px;
+    font-size: 10px;
+    width: max-content;
+    z-index: 999;
+    padding: 1px 5px;
+    color: #fff;
+    left: 0;
+    top: -19px;
+    text-transform: uppercase;
+    /* transition: all .2s ease-in-out; */
+}
+.copybox .hide{opacity:0;}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="container theme">
+    <div class="row pt-3">
+        <div class="col-12 col-md-8 order-2 order-md-1">
+            {{content|safe}}
+        </div>
+
+
+        <div class="col-12 col-md-4 order-1 order-md-2 the-sidebar">
+            <div class="most-wanted px-2 py-4">
+                {% if sidebar %}{{sidebar}} {% endif %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+
+{% block bottom_script %}
+
+<script>
+    const value = document.querySelector('.copy-value');
+    const valueText = value.getAttribute(`value`);
+    const copied = document.querySelector('.copied');
+    const snippet = document.querySelector('.snippet');
+
+
+
+    // Show "copy" icon on hover with helper class.
+    value.addEventListener('mouseover', () => snippet.classList.remove(`hide`))
+    value.addEventListener('mouseleave', () => snippet.classList.add(`hide`))
+
+
+    // Copy text when clicking on it.
+    value.addEventListener('click', () => {
+        // We change "copy" icon for "copied" message.
+        copied.classList.remove('hide')
+
+        // We turn simple text into an input value temporarily, so we can use methods .select() and .execCommand() which are compatible with inputs and textareas.
+        let helperInput = document.createElement('input')
+        document.body.appendChild(helperInput)
+        helperInput.value = valueText
+        helperInput.select()
+        document.execCommand('copy')
+        document.body.removeChild(helperInput)
+
+        // We remove the "copied" message after 2 seconds.
+        setTimeout(() => {
+            copied.classList.add('hide')
+        }, 2000)
+
+    })
+
+</script>
+
+
+{% endblock %}

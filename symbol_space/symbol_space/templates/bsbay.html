@@ -21,7 +21,8 @@
 
 	{% include "bsbay_component/font-awesome.html" %}
 
-
+	{% block head_script %}
+	{% endblock %}
 	<link rel="stylesheet" media="all"
 		href="{% static 'bsbay_files/app.css' %}">
 	<script
@@ -56,9 +57,8 @@
 
 
 
-
-
-
+	{% block bottom_script %}
+	{% endblock %}
 
 
 

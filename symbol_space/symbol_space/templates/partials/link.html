@@ -1,1 +1,5 @@
 <a class="{% if classname %} {{classname}} {% endif %}" href="{{href}}">{{anchor}}</a>
+
+{% if click_to_copy %}
+<a class="{% if classname %} {{classname}} {% endif %} copy-click" data-tooltip-text="Click to copy" data-tooltip-text-copied="✔ Copied to clipboard" href="{{href}}">{{anchor}}</a>
+{%endif%}

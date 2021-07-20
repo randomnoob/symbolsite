@@ -91,6 +91,7 @@ LOCAL_APPS = [
     "emoji", #Main app
     "fixedpages", #Show static pages
     "codetoemoji", ## Lookup code to emoji
+    "leanmoji", ## module-based refactor kaomoji
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

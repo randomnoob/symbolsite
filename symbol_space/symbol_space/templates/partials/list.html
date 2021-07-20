@@ -1,7 +1,8 @@
-{% for element in object_list %}
+
 
 <ul class="{% if classname %} {{classname}} {%else%}  card-text list-unstyled  {% endif %}">
-    <li>{% element %}</li>
+    {% for element in object_list %}
+    <li>{{ element|safe }}</li>
+    {% endfor %}
 </ul>
 
-{% endfor %}

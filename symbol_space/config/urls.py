@@ -18,6 +18,7 @@ urlpatterns = [
     # Your stuff: custom urls includes go here
     path("", include('emoji.urls')),
     path("pages/", include('fixedpages.urls')),
+    path("emo/", include('leanmoji.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

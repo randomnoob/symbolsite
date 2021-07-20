@@ -39,7 +39,7 @@ def table(header, rows, class_=''):
         obj['classname'] = class_
     return render_to_string('partials/table.html', obj)
 
-def a(href, anchor, class_=''):
+def link(href, anchor, class_='', click_to_copy=False):
     # Render link.html into HTML
     obj={
         'href': href,
@@ -47,4 +47,26 @@ def a(href, anchor, class_=''):
     }
     if class_:
         obj['classname'] = class_
+    if click_to_copy:
+        obj['click_to_copy'] = True
     return render_to_string('partials/link.html', obj)
+
+
+def heading2(text, class_=''):
+    obj = {'heading2': text}
+    if class_:
+        obj['classname'] = class_
+    return render_to_string('partials/heading.html',obj) 
+
+
+def free_wrap(html, class_='', wrapper='div'):
+    obj = {'element': html}
+    if class_:
+        obj['classname'] = class_
+    if wrapper=='span':
+        obj['span'] = True
+    elif wrapper=='input':
+        obj['input'] = True
+    else:
+        obj['div'] = True
+    return render_to_string('partials/freewrap.html',obj) 
