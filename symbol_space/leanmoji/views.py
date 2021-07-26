@@ -15,6 +15,7 @@ from django.http import Http404
 from django.shortcuts import render
 from django.urls import reverse
 from django.template.loader import render_to_string
+from django.views.generic.list import ListView
 
 from leanmoji.models import Kaomoji
 from .utils import link, p, table, li, card, heading2, free_wrap
@@ -30,11 +31,11 @@ def default_sidebar():
     recent_list_html = li(recent_html, class_="  card-text list-unstyled  text-center")
 
     h2_dance = heading2("Dance kaomoji", class_='text-center py-2')
-    dance = Kaomoji.objects.filter(name__contains="dance")
+    dance = Kaomoji.objects.filter(name__contains="dance")[:15]
     dance_html = [link(href=reverse('emo_detail', args=[x.slug]), anchor=x.kaomoji) for x in dance]
     dance_list_html = li(dance_html, class_="  card-text list-unstyled  text-center")
     
-    view_more = link(href="/emo/home", anchor="View more", class_="btn btn-block btn-sm btn-light")
+    view_more = link(href="/emo/Dance", anchor="View more", class_="btn btn-block btn-sm btn-light")
 
     sidebar = h2_kao + recent_list_html + h2_dance + dance_list_html + view_more
     return sidebar
@@ -104,10 +105,24 @@ def cateview(request, category):
         obj = itertools.chain(obj1, obj2)
         title = f"{category.title()} Lenny faces and Text Emoticons"
         
-        obj_html = [link(href=reverse('emo_detail', args=[x.slug]), anchor=f"{x.kaomoji} {x.name}") for x in obj]
+        obj_html = []
+        idx = 0
+        for x in obj:
+            obj_html.append(link(href=reverse('emo_detail', args=[x.slug]), anchor=f"{x.kaomoji} {x.name}"))
+            idx += 1
+            if idx >= 30:
+                break
+
         obj_list_html = free_wrap(li(obj_html), wrapper='div', class_="text-center")
 
         content = obj_list_html
     except Kaomoji.DoesNotExist:
         raise Http404("Kaomoji does not exist")
     return render(request, 'bsbay_base.html', {'title': title, 'content': content, 'sidebar':default_sidebar()})
+
+
+
+class KaomojiListView(ListView):
+    model= Kaomoji
+    template_name= 'bsbay_kaomoji_all.html'
+    paginate_by = 20
