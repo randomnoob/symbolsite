@@ -1,5 +1,6 @@
+import traceback
 from django.template.loader import render_to_string
-
+import requests
 
 def card(title, body, class_=''):
     # Render card.html into HTML
@@ -70,3 +71,4 @@ def free_wrap(html, class_='', wrapper='div'):
     else:
         obj['div'] = True
     return render_to_string('partials/freewrap.html',obj) 
+
