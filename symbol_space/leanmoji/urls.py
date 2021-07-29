@@ -8,7 +8,7 @@ from .views import detail, homeview, cateview, KaomojiListView
 urlpatterns = [
     path("home", homeview, name="emo_homeview"),
     path("all", KaomojiListView.as_view(), name="emo_allview"),
-    path("/c/<str:category>", cateview, name="emo_category"),
+    path("c/<str:category>", cateview, name="emo_category"),
     path("<slug:slug>", detail, name="emo_detail"),
     # path("c/<slug:slug>/", CategoryView.as_view(), name="category_detail"),
     # # path("versions", UnicodeVersionView.as_view(), name="all_versions"),

@@ -14,7 +14,7 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Category name</th>
+                    <th scope="col">Face</th>
                     <th scope="col">Description</th>
                   </tr>
                 </thead>
@@ -22,9 +22,8 @@
                   {% for object in object_list %}
                   <tr>
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td><a href="/emo/{{object.slug}}" title="{{object.name}}">{% if object.name %}{{object.name}}{% else %}{{object.description}}{{object.slug}}{% endif %}</a></td>
-                    <td>{{object.description}}</td>
-                  </tr>
+                    <td>{{object.kaomoji}}</td>
+                    <td><a href="/emo/{{object.slug}}" title="{{object.name}}">{% if object.name %}{{object.name}}{% else %}{{object.slug}}{% endif %}</a></td>                  </tr>
                   {% endfor %}
                 </tbody>
               </table>

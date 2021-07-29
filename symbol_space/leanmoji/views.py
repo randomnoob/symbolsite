@@ -35,7 +35,7 @@ def default_sidebar():
     dance_html = [link(href=reverse('emo_detail', args=[x.slug]), anchor=x.kaomoji) for x in dance]
     dance_list_html = li(dance_html, class_="  card-text list-unstyled  text-center")
     
-    view_more = link(href="/emo/Dance", anchor="View more", class_="btn btn-block btn-sm btn-light")
+    view_more = link(href="/emo/c/Dance", anchor="View more", class_="btn btn-block btn-sm btn-light")
 
     sidebar = h2_kao + recent_list_html + h2_dance + dance_list_html + view_more
     return sidebar
@@ -67,9 +67,9 @@ def detail(request, slug):
         print(f"Finding slug : {slug}")
         obj = Kaomoji.objects.get(slug=slug)
         print(f"xzzzzz: {obj}")
-        title = obj.kaomoji + " " + obj.name
+        title = obj.kaomoji + " " + obj.name + " Lenny Face"
         if not obj.name:
-            title += " " + obj.description
+            title += " " + obj.description + " Lenny Face"
 
         
         kaomoji_copy = render_to_string('partials/copy-box.html', {'copy_value': obj.kaomoji})

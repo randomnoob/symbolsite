@@ -300,3 +300,4 @@ SOCIALACCOUNT_ADAPTER = "symbol_space.users.adapters.SocialAccountAdapter"
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+#ALLOWED_HOSTS = ALLOWED_HOSTS + ['45.61.188.12']
