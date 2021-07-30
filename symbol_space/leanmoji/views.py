@@ -29,6 +29,7 @@ def default_sidebar():
     h2_kao = heading2("Recent kaomoji", class_='text-center py-2')
     recent_html = [link(href=reverse('emo_detail', args=[x.slug]), anchor=f"{x.kaomoji} {x.name}") for x in recent]
     recent_list_html = li(recent_html, class_="  card-text list-unstyled  text-center")
+    view_all = link(href="/emo/all", anchor="View all kaomoji", class_="btn btn-block btn-sm btn-secondary")
 
     h2_dance = heading2("Dance kaomoji", class_='text-center py-2')
     dance = Kaomoji.objects.filter(name__contains="dance")[:15]
@@ -37,7 +38,7 @@ def default_sidebar():
     
     view_more = link(href="/emo/c/Dance", anchor="View more", class_="btn btn-block btn-sm btn-light")
 
-    sidebar = h2_kao + recent_list_html + h2_dance + dance_list_html + view_more
+    sidebar = h2_kao + recent_list_html + view_all + h2_dance + dance_list_html + view_more
     return sidebar
 
 def query_latest():
